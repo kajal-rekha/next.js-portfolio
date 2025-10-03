@@ -66,7 +66,7 @@ const Navbar = () => {
                     </div>
                     <div className="hidden md:block ">
                         <Link
-                            href="./"
+                            href="/"
                             className="text-sm py-3 px-6 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
                         >
                             View Resume
@@ -132,7 +132,7 @@ const Navbar = () => {
                                     </Link>
                                 </div>
 
-                                <div className="">
+                                <div>
                                     <Link
                                         href="/"
                                         className=" text-sm py-3 px-4 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/80 eq"
