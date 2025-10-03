@@ -20,17 +20,17 @@
 } */
 
 @theme {
-    --color-primary: #000017;
+    --color-primary: #211844;
     --color-secondary: #6b5f94;
-    --color-success: #251c4a;
+    --color-violet: #754870;
     --color-accent: #24184a;
     --color-dark: #3d3b3d;
-    --color-blue: #654ea8;
+    --color-blue:#664baf;
     --color-light: #f6f4f5;
     --color-gray: #ebebf9;
     --font-sans: "Inter", sans-serif;
     --font-mono: "Roboto Mono", monospace;
-    --color-background:  #ecedf8;
+    --color-background: #ecedf8;
 }
 
 body {
