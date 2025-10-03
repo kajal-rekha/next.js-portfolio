@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const Hero = () => {
     return (
-        <div className="pt-40 pb-10  min-h-screen">
+        <div className="pt-32 md:pt-56 pb-10  min-h-screen">
             <div className="wrapper flex flex-col md:flex-row  justify-between gap-32 h-[95vh]">
                 <div>
                     <div className="flex flex-col gap-2 items-start  ">
                         <p className="text-xl md:text-2xl text-primary  font-bold">
                             Hello there,
                         </p>
-                        <h1 className="text-3xl md:text-7xl text-primary  font-bold capitalize">
+                        <h1 className="text-3xl sm:text-4xl md:text-7xl text-primary  font-bold capitalize">
                             I am{" "}
                             <span className=" text-blue  font-semibold">
                                 kajal rekha
@@ -28,10 +28,10 @@ const Hero = () => {
                         </p>
                     </div>
                     <div className="mt-5 flex gap-5">
-                        <button className="text-sm py-3 px-8 text-gray capitalize  font-semibold bg-blue  rounded-md hover:bg-blue/90 eq">
+                        <button className="text-sm py-3 px-4 md:px-8 text-gray capitalize  font-semibold bg-blue  rounded-md hover:bg-blue/90 eq">
                             Contact me
                         </button>
-                        <button className="text-sm py-3 px-8 text-gray capitalize  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq">
+                        <button className="text-sm py-3 px-4 md:px-8 text-gray capitalize  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq">
                             learn more
                         </button>
                     </div>

@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="sm:w-full navbar h-20 shadow-lg flex bg-gray">
+            <div className="sm:w-full navbar h-20 shadow-lg flex bg-gray fixed top-0 left-0 right-0 z-[99]">
                 <div className="wrapper flex justify-between items-center">
                     <div className="logo">
                         <Link
@@ -92,41 +92,41 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <div
                             onClick={handleOpen}
-                            className={`fixed top-20 right-0 h-screen w-92 bg-dark/10 shadow-lg z-[98] transform transition-transform  eq ${
+                            className={`fixed top-20 right-0 h-screen w-92 bg-blue   shadow-lg z-[98] transform transition-transform  eq ${
                                 toggle ? "translate-x-0" : "translate-x-full"
                             }`}
                         >
                             <div className="flex flex-col gap-5 items-center h-full  pt-10 ">
-                                <div className="flex flex-col gap-5 items-center ">
+                                <div className="flex flex-col gap-5 items-center">
                                     <Link
                                         href="/"
-                                        className="text-primary hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Home
                                     </Link>
                                     <Link
                                         href="/projects"
-                                        className="text-primary hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Projects
                                     </Link>
 
                                     <Link
                                         href="/skills"
-                                        className="text-primary hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Skills
                                     </Link>
                                     <Link
                                         href="/about"
-                                        className="text-primary hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         About
                                     </Link>
 
                                     <Link
                                         href="/contact"
-                                        className="text-primary hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Contact
                                     </Link>
