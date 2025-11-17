@@ -29,13 +29,13 @@
     --color-light: #f6f4f5;
     --color-gray: #ebebf9;
     --font-sans: "Inter", sans-serif;
-    --font-mono: "Roboto Mono", monospace;
+    --font-mono: "Roboto ", monospace;
     --color-background: #ecedf8;
 }
 
 body {
     background: var(--color-background);
-    font-family: sans-serif;
+    font-family: var(--font-sans);
 }
 
 .wrapper {

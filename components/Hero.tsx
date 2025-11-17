@@ -1,13 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
+import {
+    BiLogoFacebook,
+    BiLogoGithub,
+    BiLogoLinkedin,
+    BiLogoTwitter,
+} from "react-icons/bi";
+import { SiLeetcode } from "react-icons/si";
 
 const Hero = () => {
     return (
-        <div className="pt-32 md:pt-56 pb-10  min-h-screen">
+        <div className="pt-32 md:pt-56 pb-10  min-h-screen bg-gray/90">
             <div className="wrapper flex flex-col md:flex-row  justify-between gap-32 h-[95vh]">
                 <div>
                     <div className="flex flex-col gap-2 items-start  ">
                         <p className="text-xl md:text-2xl text-primary  font-bold">
-                            Hello there,
+                            Hello! there –
                         </p>
                         <h1 className="text-3xl sm:text-4xl md:text-7xl text-primary  font-bold capitalize">
                             I am{" "}
@@ -15,11 +23,11 @@ const Hero = () => {
                                 kajal rekha
                             </span>
                         </h1>
-                        <h4 className="text-xl md:text-2xl text-primary  font-semibold capitalize">
-                            mern stack developer
+                        <h4 className="text-2xl md:text-3xl text-primary  font-semibold capitalize">
+                            Passionate mern stack developer
                         </h4>
 
-                        <p className="text-[1.1rem]  text-primary mt-8">
+                        <p className="text-[1.1rem]  text-primary mt-2">
                             I am a skilled MERN stack developer with expertise
                             in building web applications. I am passionate about
                             creating efficient and user-friendly solutions,
@@ -34,6 +42,47 @@ const Hero = () => {
                         <button className="text-sm py-3 px-4 md:px-8 text-gray capitalize  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq">
                             learn more
                         </button>
+                    </div>
+
+                    <div className="mt-8">
+                        <div className="border-t  text-black/10 h-[0.2rem] w-[60%] "></div>
+                        {/* <p className="text-[0.8rem]  text-primary mt-2 uppercase font-medium">
+                            Find With me
+                        </p> */}
+                        <div className="flex flew-row gap-5 items-center mt-3 ">
+                            <Link
+                                href="https://x.com/kajalreka"
+                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                            >
+                                <BiLogoTwitter className="w-7 h-7" />
+                            </Link>
+
+                            <Link
+                                href="https://www.linkedin.com/in/kajal-rekha"
+                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                            >
+                                <BiLogoLinkedin className="w-7 h-7" />
+                            </Link>
+                            <Link
+                                href="https://www.facebook.com/anowar.kajal"
+                                className="text-primary  bg-light/40 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                            >
+                                <BiLogoFacebook className="w-7 h-7" />
+                            </Link>
+                            <Link
+                                href="https://github.com/kajal-rekha"
+                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                            >
+                                <BiLogoGithub className="w-7 h-7" />
+                            </Link>
+
+                            <Link
+                                href="https://leetcode.com/u/kajalrekha"
+                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                            >
+                                <SiLeetcode className="w-7 h-7" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
