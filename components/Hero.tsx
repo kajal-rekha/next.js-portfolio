@@ -44,7 +44,7 @@ const Hero = () => {
                         </button>
                     </div>
 
-                    <div className="mt-8">
+                    <div className="mt-10">
                         <div className="border-t  text-black/10 h-[0.2rem] w-[60%] "></div>
                         {/* <p className="text-[0.8rem]  text-primary mt-2 uppercase font-medium">
                             Find With me

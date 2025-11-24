@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="sm:w-full navbar h-20 shadow-lg flex bg-gray fixed top-0 left-0 right-0 z-[99]">
+            <div className="sm:w-full navbar h-16 shadow-lg flex bg-gray fixed top-0 left-0 right-0 z-[99]">
                 <div className="wrapper flex justify-between items-center">
                     <div className="logo">
                         <Link
@@ -26,38 +26,38 @@ const Navbar = () => {
                     </div>
 
                     <div className="hidden md:block">
-                        <div className="flex gap-5 justify-between text-sm  lg:text-xl font-normal ">
-                            <div className="flex gap-5 justify-between ">
+                        <div className="flex gap-5 justify-between font-normal">
+                            <div className="flex gap-5 justify-between">
                                 <Link
                                     href="/"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm md:text-[0.9rem] font-semibold eq"
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     href="/projects"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold eq"
                                 >
                                     Projects
                                 </Link>
 
                                 <Link
                                     href="/skills"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold  eq"
                                 >
                                     Skills
                                 </Link>
 
                                 <Link
                                     href="/about"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold  eq"
                                 >
                                     About
                                 </Link>
 
                                 <Link
                                     href="/contact"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold eq"
                                 >
                                     Contact
                                 </Link>
@@ -67,7 +67,7 @@ const Navbar = () => {
                     <div className="hidden md:block ">
                         <Link
                             href="/"
-                            className="text-sm py-3 px-6 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
+                            className="text-sm py-3 px-5 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
                         >
                             View Resume
                         </Link>
@@ -92,7 +92,7 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <div
                             onClick={handleOpen}
-                            className={`fixed top-20 right-0 h-screen w-92 bg-blue   shadow-lg z-[98] transform transition-transform  eq ${
+                            className={`fixed top-16 right-0 h-screen w-72 pt-5 bg-blue shadow-lg z-[98] eq ${
                                 toggle ? "translate-x-0" : "translate-x-full"
                             }`}
                         >
@@ -100,42 +100,42 @@ const Navbar = () => {
                                 <div className="flex flex-col gap-5 items-center">
                                     <Link
                                         href="/"
-                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Home
                                     </Link>
                                     <Link
                                         href="/projects"
-                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Projects
                                     </Link>
 
                                     <Link
                                         href="/skills"
-                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Skills
                                     </Link>
                                     <Link
                                         href="/about"
-                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         About
                                     </Link>
 
                                     <Link
                                         href="/contact"
-                                        className="text-light hover:text-secondary text-sm  md:text-[1.2rem] font-semibold  eq"
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Contact
                                     </Link>
                                 </div>
 
-                                <div>
+                                <div className="mt-2">
                                     <Link
                                         href="/"
-                                        className=" text-sm py-3 px-4 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/80 eq"
+                                        className=" text-sm py-2.5 px-4 text-gray  font-semibold  bg-primary rounded-md hover:bg-primary/80 eq"
                                     >
                                         View Resume
                                     </Link>
