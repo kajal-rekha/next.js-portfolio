@@ -30,34 +30,34 @@ const Navbar = () => {
                             <div className="flex gap-5 justify-between">
                                 <Link
                                     href="/"
-                                    className="text-primary hover:text-blue text-sm md:text-[0.9rem] font-semibold eq"
+                                    className="text-primary hover:text-blue text-sm md:text-[1rem] font-semibold eq"
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     href="/projects"
-                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold eq"
                                 >
                                     Projects
                                 </Link>
 
                                 <Link
                                     href="/skills"
-                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[1rem] font-semibold  eq"
                                 >
                                     Skills
                                 </Link>
 
                                 <Link
                                     href="/about"
-                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold  eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold  eq"
                                 >
                                     About
                                 </Link>
 
                                 <Link
                                     href="/contact"
-                                    className="text-primary hover:text-blue text-sm  md:text-[0.9rem]  font-semibold eq"
+                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold eq"
                                 >
                                     Contact
                                 </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
                     </div>
                     <div className="hidden md:block ">
                         <Link
-                            href="/"
+                            href="https://drive.google.com/file/d/1fQMfBKiDivZp4R-A_h_jozKjDVQjb8kR/view?usp=drive_link"
                             className="text-sm py-3 px-5 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
                         >
                             View Resume

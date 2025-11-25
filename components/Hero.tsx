@@ -32,57 +32,52 @@ const Hero = () => {
                             in building web applications. I am passionate about
                             creating efficient and user-friendly solutions,
                             leveraging my strong knowledge of MongoDB,
-                            Express.js, Next.js, React, and Node.js.
+                            Express.js, Next.js, React, and Node.js
                         </p>
                     </div>
-                    <div className="mt-5 flex gap-5">
-                        <button className="text-sm py-3 px-4 md:px-8 text-gray capitalize  font-semibold bg-blue  rounded-md hover:bg-blue/90 eq">
-                            Contact me
-                        </button>
-                        <button className="text-sm py-3 px-4 md:px-8 text-gray capitalize  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq">
-                            learn more
-                        </button>
-                    </div>
-
-                    <div className="mt-10">
-                        <div className="border-t  text-black/10 h-[0.2rem] w-[60%] "></div>
-                        {/* <p className="text-[0.8rem]  text-primary mt-2 uppercase font-medium">
-                            Find With me
-                        </p> */}
-                        <div className="flex flew-row gap-5 items-center mt-3 ">
+                    <div className="social-links">
+                        <div className="flex flew-row gap-7 items-center mt-5">
                             <Link
                                 href="https://x.com/kajalreka"
-                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                                className="text-primary hover:text-blue/90 hover:scale-125 eq"
                             >
-                                <BiLogoTwitter className="w-7 h-7" />
+                                <BiLogoTwitter className="w-6 h-6" />
                             </Link>
 
                             <Link
                                 href="https://www.linkedin.com/in/kajal-rekha"
-                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                                className="text-primary hover:text-blue/90 hover:scale-125 eq"
                             >
-                                <BiLogoLinkedin className="w-7 h-7" />
+                                <BiLogoLinkedin className="w-6 h-6" />
                             </Link>
                             <Link
                                 href="https://www.facebook.com/anowar.kajal"
-                                className="text-primary  bg-light/40 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                                className="text-primary hover:text-blue/90 hover:scale-125 eq"
                             >
-                                <BiLogoFacebook className="w-7 h-7" />
+                                <BiLogoFacebook className="w-6 h-6" />
                             </Link>
                             <Link
                                 href="https://github.com/kajal-rekha"
-                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                                className="text-primary  hover:text-blue/90  hover:scale-125 eq"
                             >
-                                <BiLogoGithub className="w-7 h-7" />
+                                <BiLogoGithub className="w-6 h-6" />
                             </Link>
 
                             <Link
                                 href="https://leetcode.com/u/kajalrekha"
-                                className="text-primary  bg-light/50 p-3.5 shadow-2xl rounded-md hover:text-blue/90 eq"
+                                className="text-primary hover:text-blue/90 hover:scale-125 eq"
                             >
-                                <SiLeetcode className="w-7 h-7" />
+                                <SiLeetcode className="w-6 h-6" />
                             </Link>
                         </div>
+                    </div>
+                    <div className="mt-7 flex gap-7">
+                        <button className="text-sm py-2.5 px-5 text-gray capitalize font-semibold bg-blue  rounded-md hover:bg-blue/90 eq">
+                            Contact me
+                        </button>
+                        <button className="text-sm py-2.5 px-5 text-gray capitalize  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq">
+                            learn more
+                        </button>
                     </div>
                 </div>
 
