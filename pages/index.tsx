@@ -1,11 +1,20 @@
+
+import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 
 const HomePage = () => {
     return (
-        <div>
-            <Navbar />
+        <div> 
             <Hero />
+            <main>
+                <Projects limit={6} />
+                <About /> 
+                <Skills />
+                <Contact />
+            </main>
         </div>
     );
 };

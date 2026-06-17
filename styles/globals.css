@@ -1,23 +1,15 @@
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=Orbitron:wght@400;700&family=Audiowide&family=Syncopate:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap");
+
 :root {
     --background: #ffffff;
     --foreground: #171717;
 }
 
-/* @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+html {
+    scroll-behavior: smooth;
 }
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-} */
 
 @theme {
     --color-primary: #211844;
@@ -25,11 +17,20 @@
     --color-violet: #754870;
     --color-accent: #24184a;
     --color-dark: #3d3b3d;
-    --color-blue:#664baf;
+    --color-blue: #664baf;
     --color-light: #f6f4f5;
     --color-gray: #ebebf9;
-    --font-sans: "Inter", sans-serif;
-    --font-mono: "Roboto ", monospace;
+
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Sora", sans-serif;
+    --font-display: "Bebas Neue", sans-serif;
+
+    --font-outfit: "Outfit", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-orbitron: "Orbitron", sans-serif;
+    --font-audiowide: "Audiowide", sans-serif;
+    --font-syncopate: "Syncopate", sans-serif;
+    --font-mono: "Roboto Mono", monospace;
     --color-background: #ecedf8;
 }
 
@@ -39,10 +40,132 @@ body {
 }
 
 .wrapper {
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     @apply container mx-auto px-5 lg:px-0;
 }
 
 .eq {
     transition: 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Typography + layout tweaks */
+body {
+    font-family:
+        var(--font-body),
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial;
+    color: var(--color-dark);
+}
+
+.heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+.btn-primary {
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+    color: white;
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--color-dark);
+}
+
+/* Cards and sections */
+.card {
+    background: white;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 1rem;
+}
+
+/* Responsive spacing tweaks */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.2rem;
+    }
+    .wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Utility color helpers used in components */
+.text-primary {
+    color: var(--color-primary);
+}
+.bg-primary {
+    background-color: var(--color-primary);
+}
+.text-blue {
+    color: var(--color-blue);
+}
+.text-light {
+    color: #ffffff;
+}
+.bg-gray {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.text-gray {
+    color: #f3f4f6;
+}
+.bg-light {
+    background-color: #ffffff;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+    .wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Helper color utilities for components (fallbacks for Tailwind-style opacity classes) */
+.bg-primary-95 {
+    background-color: rgba(33, 24, 68, 0.95);
+}
+.text-primary-50 {
+    color: rgba(33, 24, 68, 0.5);
+}
+.text-primary-40 {
+    color: rgba(33, 24, 68, 0.4);
+}
+.text-blue-60 {
+    color: rgba(102, 75, 175, 0.6);
+}
+.shadow-blue-30 {
+    box-shadow: 0 10px 30px rgba(102, 75, 175, 0.3);
+}
+.bg-blue {
+    background-color: var(--color-blue);
+}
+.hover-bg-blue-90:hover {
+    background-color: rgba(102, 75, 175, 0.9) !important;
+}
+.border-white-10 {
+    border-color: rgba(255, 255, 255, 0.1);
 }

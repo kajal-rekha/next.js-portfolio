@@ -1,4 +1,4 @@
-import { Menu, Minus } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,21 +13,23 @@ const Navbar = () => {
     };
 
     return (
-        <div>
-            <div className="sm:w-full navbar h-16 shadow-lg flex bg-gray fixed top-0 left-0 right-0 z-[99]">
+        <nav>
+            <div className="w-full navbar h-20 shadow-lg flex bg-gray-100 fixed top-0 left-0 right-0 z-[99] rounded-2xl">
                 <div className="wrapper flex justify-between items-center">
                     <div className="logo">
                         <Link
                             href="/"
-                            className="text-lg md:text-xl text-primary font-semibold"
+                            className="text-lg md:text-xl text-primary font-semibold font-mono"
                         >
                             Kajal Rekha
                         </Link>
                     </div>
 
                     <div className="hidden md:block">
-                        <div className="flex gap-5 justify-between font-normal">
+                        <div className="flex gap-5 justify-between ">
                             <div className="flex gap-5 justify-between">
+
+                                
                                 <Link
                                     href="/"
                                     className="text-primary hover:text-blue text-sm md:text-[1rem] font-semibold eq"
@@ -42,21 +44,27 @@ const Navbar = () => {
                                 </Link>
 
                                 <Link
-                                    href="/skills"
+                                    href="#skills"
                                     className="text-primary hover:text-blue text-sm  md:text-[1rem] font-semibold  eq"
                                 >
                                     Skills
                                 </Link>
 
                                 <Link
-                                    href="/about"
+                                    href="#about"
                                     className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold  eq"
                                 >
                                     About
                                 </Link>
+                                <Link
+                                    href="/blog"
+                                    className="text-primary hover:text-blue text-sm md:text-[1rem]  font-semibold eq"
+                                >
+                                    Blog
+                                </Link>
 
                                 <Link
-                                    href="/contact"
+                                    href="#contact"
                                     className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold eq"
                                 >
                                     Contact
@@ -66,10 +74,12 @@ const Navbar = () => {
                     </div>
                     <div className="hidden md:block ">
                         <Link
-                            href="https://drive.google.com/file/d/1fQMfBKiDivZp4R-A_h_jozKjDVQjb8kR/view?usp=drive_link"
+                            href="/resume.pdf"
                             className="text-sm py-3 px-5 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
+                            target="_blank"
+                            rel="noreferrer"
                         >
-                            View Resume
+                            Download Resume
                         </Link>
                     </div>
 
@@ -80,52 +90,61 @@ const Navbar = () => {
                             onClick={handleToggle}
                             className="inline-flex items-center justify-center focus:outline-none text-xl  z-[99]"
                         >
-                            {toggle === true ? <Minus /> : <Menu />}
+                            {toggle === true ? <X /> : <Menu />}
                         </button>
                     </div>
                 </div>
             </div>
+            
 
             {/************ mobile menu *************/}
             <div>
                 {toggle ? (
                     <div className="md:hidden">
-                        <div
-                            onClick={handleOpen}
-                            className={`fixed top-16 right-0 h-screen w-72 pt-5 bg-blue shadow-lg z-[98] eq ${
-                                toggle ? "translate-x-0" : "translate-x-full"
-                            }`}
-                        >
+                        <div className="fixed inset-x-0 top-20 bottom-0 pt-5 bg-blue shadow-lg z-[98] overflow-auto">
                             <div className="flex flex-col gap-5 items-center h-full  pt-10 ">
                                 <div className="flex flex-col gap-5 items-center">
                                     <Link
-                                        href="/"
+                                        href="#home"
+                                        onClick={handleOpen}
                                         className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Home
                                     </Link>
                                     <Link
-                                        href="/projects"
+                                        href="#projects"
+                                        onClick={handleOpen}
                                         className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Projects
                                     </Link>
 
                                     <Link
-                                        href="/skills"
+                                        href="/blog"
+                                        onClick={handleOpen}
+                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
+                                    >
+                                        Blog
+                                    </Link>
+
+                                    <Link
+                                        href="#skills"
+                                        onClick={handleOpen}
                                         className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Skills
                                     </Link>
                                     <Link
-                                        href="/about"
+                                        href="#about"
+                                        onClick={handleOpen}
                                         className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         About
                                     </Link>
 
                                     <Link
-                                        href="/contact"
+                                        href="#contact"
+                                        onClick={handleOpen}
                                         className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
                                     >
                                         Contact
@@ -134,10 +153,13 @@ const Navbar = () => {
 
                                 <div className="mt-2">
                                     <Link
-                                        href="/"
+                                        href="/resume.pdf"
+                                        onClick={handleOpen}
                                         className=" text-sm py-2.5 px-4 text-gray  font-semibold  bg-primary rounded-md hover:bg-primary/80 eq"
+                                        target="_blank"
+                                        rel="noreferrer"
                                     >
-                                        View Resume
+                                        Download Resume
                                     </Link>
                                 </div>
                             </div>
@@ -145,7 +167,7 @@ const Navbar = () => {
                     </div>
                 ) : null}
             </div>
-        </div>
+        </nav>
     );
 };
 
