@@ -1,5 +1,23 @@
 export const ProjectsData = [
     {
+        title: "Subnivo",
+        desc: "Luminex is an online jewelry shop. Seamlessly navigate through stunning product details, secure user authentication, and a smooth shopping cart. Powered by Next.js, TypeScript, Redux, Redux Persist, SwiperJS, SWR, CLSX, Lenix, and more.",
+        tags: ["Next.js", "TypeScript", "Redux","Redux Persist","SwiperJS","SWR","CLSX","Lenix","Axios","Mongodb","Framer","Motion","Aos","Tailwind CSS"],
+        liveLink: "https://subnivo.vercel.app/",
+        frontEndLink: "https://github.com/kajal-rekha/luminex-client.git",
+        backendLink: "https://github.com/kajal-rekha/luminex-server.git",
+        image:"https://res.cloudinary.com/dh0ado2ir/image/upload/v1789529283/subnivo_x3u55x.png",
+    },
+    {
+        title: "purehillglow",
+        desc: "Luminex is an online jewelry shop. Seamlessly navigate through stunning product details, secure user authentication, and a smooth shopping cart. Powered by Next.js, TypeScript, Redux, Redux Persist, SwiperJS, SWR, CLSX, Lenix, and more.",
+        tags: ["Next.js", "TypeScript", "Redux","Redux Persist","SwiperJS","SWR","CLSX","Lenix","Axios","Mongodb","Framer","Motion","Aos","Tailwind CSS"],
+        liveLink: "https://luminex-lux.vercel.app",
+        frontEndLink: "https://github.com/kajal-rekha/luminex-client.git",
+        backendLink: "https://github.com/kajal-rekha/luminex-server.git",
+        image:"https://res.cloudinary.com/dh0ado2ir/image/upload/v1704908056/Screenshot_69_gczjrg.png",
+    },
+    {
         title: "Luminex Lux - An Online Jewelry Shop",
         desc: "Luminex is an online jewelry shop. Seamlessly navigate through stunning product details, secure user authentication, and a smooth shopping cart. Powered by Next.js, TypeScript, Redux, Redux Persist, SwiperJS, SWR, CLSX, Lenix, and more.",
         tags: ["Next.js", "TypeScript", "Redux","Redux Persist","SwiperJS","SWR","CLSX","Lenix","Axios","Mongodb","Framer","Motion","Aos","Tailwind CSS"],
@@ -47,7 +65,7 @@ export const ProjectsData = [
         image:"https://res.cloudinary.com/dh0ado2ir/image/upload/v1687459898/Screenshot_53_lcf8zk.png"
     },
     {
-        title: "Celestia _ An AI powered chat assistance",
+        title: "Celestia - An AI powered chat assistance",
         desc:  "Celestia is a smart, interactive chat solution designed to deliver accurate and contextually relevant responses to user queries. Built with Node.js, Express.js, MongoDB, and string-similarity algorithms for the backend, it ensures seamless data handling and precise answer matching. ",
         tags: ["React.js",
             "Node.js",
@@ -58,10 +76,11 @@ export const ProjectsData = [
         liveLink: "https://celestia-fawn.vercel.app",
         frontEndLink: "https://github.com/kajal-rekha/celestia-client.git",
         backendLink: "https://github.com/kajal-rekha/celestia-server.git",
-        image:"https://res.cloudinary.com/dh0ado2ir/image/upload/v1756667662/celestia_hzvjtg.png"
+        image:"https://res.cloudinary.com/dh0ado2ir/image/upload/v1756667662/celestia_hzvjtg.png",
+        isAI: true,
     },
     {
-        title: "Tech Alpha _ An Ecommerce Website",
+        title: "Tech Alpha - An Ecommerce Website",
         desc: "This is an e-commerce project built using React, Redux, and Tailwind CSS. It is a modern, fast and responsive web application designed for an optimal shopping experience. The project makes use of Redux for state management and Tailwind CSS for styling to deliver an efficient and visually appealing user interface.",
         tags: [ "React",
             "Redux",

@@ -1,79 +1,108 @@
-const About = () => {
-    return (
-        <section id="about" className="py-20 bg-primary/5">
-            <div className="wrapper grid gap-10 md:grid-cols-2 items-start">
-                <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                        About me
-                    </h2>
-                    <p className="mt-4 text-primary/80 text-base leading-relaxed max-w-xl">
-                        {`I'm a passionate MERN stack developer with 2+ years of
-                        experience building scalable web applications. I
-                        specialize in creating responsive, user-friendly
-                        interfaces with clean, maintainable code.`}
-                    </p>
-                    <p className="mt-4 text-primary/80 text-base leading-relaxed max-w-xl">
-                        {`My focus is on modern web technologies, performance
-                        optimization, and delivering solutions that solve
-                        real-world problems. I'm always eager to learn new
-                        technologies and collaborate with talented teams.`}
-                    </p>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div className="p-4 bg-white rounded-lg border border-primary/10 text-center">
-                            <h3 className="text-2xl font-bold text-primary">
-                                1666
-                            </h3>
-                            <p className="text-primary/70 text-sm">
-                                GitHub contributions
-                            </p>
-                        </div>
-                        <div className="p-4 bg-white rounded-lg border border-primary/10 text-center">
-                            <h3 className="text-2xl font-bold text-primary">
-                                71
-                            </h3>
-                            <p className="text-primary/70 text-sm">
-                                LeetCode solved
-                            </p>
-                        </div>
-                        <div className="p-4 bg-white rounded-lg border border-primary/10 text-center">
-                            <h3 className="text-2xl font-bold text-primary">
-                                15+
-                            </h3>
-                            <p className="text-primary/70 text-sm">
-                                Successful projects
-                            </p>
-                        </div>
-                    </div>
-                </div>
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
-                <div className="space-y-4 sm:space-y-6">
-                    <div className="p-5 bg-white rounded-lg border border-primary/20">
-                        <h4 className="font-semibold text-primary">
-                            📍 Location
-                        </h4>
-                        <p className="text-primary/70 mt-1">
-                            Dhaka, Bangladesh
-                        </p>
-                    </div>
-                    <div className="p-5 bg-white rounded-lg border border-primary/20">
-                        <h4 className="font-semibold text-primary">
-                            🎓 Education
-                        </h4>
-                        <p className="text-primary/70 mt-1">
-                            Computer Science / IT
-                        </p>
-                    </div>
-                  
-                    <div className="p-5 bg-white rounded-lg border border-primary/20">
-                        <h4 className="font-semibold text-primary">💼 Focus</h4>
-                        <p className="text-primary/70 mt-1">
-                            Full-stack Web Development
-                        </p>
-                    </div>
-                </div>
+const About = () => {
+  return (
+    <section id="about" className="section-shell bg-white">
+      <div className="wrapper">
+        {/*============ Section Heading ==================*/}
+        <div className="mb-12 max-w-2xl">
+          <p className="section-kicker">About Me</p>
+
+          <h2 className="section-title text-left md:text-left">
+            A little about me
+          </h2>
+
+          <p className="section-copy">
+            I enjoy turning ideas into practical, reliable, and user-friendly
+            web experiences.
+          </p>
+        </div>
+
+        {/*================ Main Content ====================*/}
+        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          {/* =========Image ============*/}
+          <div className="relative mx-auto w-full max-w-[480px] lg:mx-0">
+            <div className="absolute -bottom-3 -right-3 h-full w-full rounded-2xl bg-primary" />
+
+            <div className="relative z-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+              <Image
+                src="https://res.cloudinary.com/dh0ado2ir/image/upload/v1789959189/kajal-mern_iiq7cf.jpg"
+                alt="Kajal Rekha - Full-Stack Developer"
+                width={700}
+                height={700}
+                className="aspect-[4/5] w-full object-cover"
+              />
             </div>
-        </section>
-    );
+          </div>
+
+          {/*=================== Content ===============*/}
+          <div>
+            <h3 className="text-2xl font-bold leading-tight text-primary sm:text-3xl">
+              Building web experiences with{" "}
+              <span className="text-blue">purpose and precision.</span>
+            </h3>
+
+            <div className="mt-6 space-y-4">
+              <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                I&apos;m a{" "}
+                <span className="font-semibold text-primary">
+                  Full-Stack Developer
+                </span>{" "}
+                focused on building modern web applications using React,
+                Next.js, Node.js, and TypeScript. I enjoy working across both
+                frontend and backend to create complete, reliable products.
+              </p>
+
+              <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                My approach combines clean UI, responsive design, maintainable
+                code, and practical backend architecture. I&apos;m particularly
+                interested in building products that are not only visually
+                polished but also useful and easy to use.
+              </p>
+
+              <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                I&apos;m continuously improving my skills, exploring modern
+                technologies, and turning ideas into real-world projects. Every
+                project is an opportunity to learn something new and improve how
+                I build.
+              </p>
+            </div>
+
+            {/*======================== Key Points =================*/}
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              {[
+                "Responsive & accessible interfaces",
+                "Scalable full-stack architecture",
+                "Modern React & Next.js development",
+                "Clean and maintainable code",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-2.5 text-sm font-medium text-slate-600"
+                >
+                  <CheckCircle2 size={17} className="shrink-0 text-blue" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/*============== CTA ===============*/}
+            <div className="mt-8">
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue"
+              >
+                Let&apos;s Connect
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default About;

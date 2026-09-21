@@ -1,132 +1,256 @@
+"use client";
+
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { BiLogoGithub, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Linkedin,
+  Github,
+  Twitter,
+} from "lucide-react";
 
 const Contact = () => {
-    const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState(false);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setSent(true);
-        setTimeout(() => setSent(false), 3000);
-    };
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSent(true);
 
-    return (
-        <section id="contact" className="py-20 bg-primary/5">
-            <div className="wrapper max-w-3xl">
-                <h2 className="text-3xl md:text-4xl font-bold text-primary text-center">
-                    {`Let's Connect`}
-                </h2>
-                <p className="mt-3 text-center text-primary/70">
-                    {`Have a project or want to collaborate? I'd love to hear from
-                    you!`}
-                </p>
+    setTimeout(() => {
+      setSent(false);
+    }, 4000);
+  };
 
-                <div className="mt-12 grid md:grid-cols-2 gap-8">
-                    {/* Contact Form */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-primary mb-4">
-                            Send a Message
-                        </h3>
-                        {sent ? (
-                            <div className="p-4 bg-blue/10 text-blue rounded-lg text-center">
-                                {`✓ Thanks! I'll get back to you soon.`}
-                            </div>
-                        ) : (
-                            <form
-                                onSubmit={handleSubmit}
-                                action="https://formspree.io/f/REPLACE_WITH_YOUR_ID"
-                                method="POST"
-                                className="space-y-4"
-                            >
-                                <input
-                                    required
-                                    name="name"
-                                    placeholder="Your name"
-                                    className="w-full p-3 rounded-lg border border-primary/20 focus:outline-none focus:border-blue text-primary"
-                                />
-                                <input
-                                    required
-                                    type="email"
-                                    name="email"
-                                    placeholder="your@email.com"
-                                    className="w-full p-3 rounded-lg border border-primary/20 focus:outline-none focus:border-blue text-primary"
-                                />
-                                <textarea
-                                    required
-                                    name="message"
-                                    rows={4}
-                                    placeholder="Your message..."
-                                    className="w-full p-3 rounded-lg border border-primary/20 focus:outline-none focus:border-blue text-primary"
-                                />
-                                {/* Formspree requires a _replyto field for replies */}
-                                <input type="hidden" name="_replyto" />
-                                <button
-                                    type="submit"
-                                    className="w-full py-3 px-6 btn btn-primary rounded-lg font-semibold hover:opacity-95 transition"
-                                >
-                                    Send Message
-                                </button>
-                            </form>
-                        )}
-                    </div>
+  return (
+    <section id="contact" className="section-shell bg-[#f8f9fc]">
+      <div className="wrapper">
+        {/*============== Section Header ==============*/}
+        <div className="mb-12 max-w-2xl">
+          <p className="section-kicker">Get In Touch</p>
 
-                    {/* Contact Info */}
-                    <div className="space-y-6">
-                        <h3 className="text-lg font-semibold text-primary">
-                            Other Ways to Connect
-                        </h3>
-                        <div className="space-y-4">
-                            <div>
-                                <p className="text-sm text-primary/60 mb-1">
-                                    Email
-                                </p>
-                                <a
-                                    href="mailto:kajal@example.com"
-                                    className="text-blue font-semibold hover:text-blue/80"
-                                >
-                                    kajal@example.com
-                                </a>
-                            </div>
-                            <div>
-                                <p className="text-sm text-primary/60 mb-1">
-                                    Location
-                                </p>
-                                <p className="text-primary font-semibold">
-                                    Dhaka, Bangladesh
-                                </p>
-                            </div>
-                            <div>
-                                <p className="text-sm text-primary/60 mb-3">
-                                    Follow Me
-                                </p>
-                                <div className="flex gap-4">
-                                    <Link
-                                        href="https://github.com/kajal-rekha"
-                                        className="text-primary hover:text-blue text-2xl transition"
-                                    >
-                                        <BiLogoGithub />
-                                    </Link>
-                                    <Link
-                                        href="https://linkedin.com/in/kajal-rekha"
-                                        className="text-primary hover:text-blue text-2xl transition"
-                                    >
-                                        <BiLogoLinkedin />
-                                    </Link>
-                                    <Link
-                                        href="https://twitter.com/kajalreka"
-                                        className="text-primary hover:text-blue text-2xl transition"
-                                    >
-                                        <BiLogoTwitter />
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <h2 className="section-title text-left md:text-left">
+            Let&apos;s Connect
+          </h2>
+
+          <p className="section-copy max-w-xl">
+            Have a project idea, collaboration opportunity, or just want to say
+            hello? Feel free to reach out.
+          </p>
+        </div>
+
+        {/*================ Main Content ====================*/}
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          {/*============= Contact Form ============*/}
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_35px_rgba(33,24,68,0.05)] sm:p-8">
+            {sent ? (
+              <div className="flex min-h-[350px] flex-col items-center justify-center text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue/10 text-2xl text-blue">
+                  ✓
                 </div>
+
+                <h3 className="mt-5 text-xl font-bold text-primary">
+                  Message sent!
+                </h3>
+
+                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
+                  Thanks for reaching out. I&apos;ll get back to you as soon as
+                  possible.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/*============== Name & Email ==============*/}
+                <div className="flex flex-col gap-5">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="mb-2 block text-sm font-semibold text-primary"
+                    >
+                      Name
+                    </label>
+
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block text-sm font-semibold text-primary"
+                    >
+                      Email
+                    </label>
+
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                    />
+                  </div>
+                </div>
+
+                {/*============== Message ==============*/}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-sm font-semibold text-primary"
+                  >
+                    Message
+                  </label>
+
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                    placeholder="Tell me about your project..."
+                    className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                  />
+                </div>
+
+                {/*================ Submit ==============*/}
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <button
+                    type="submit"
+                    className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-blue px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/90"
+                  >
+                    Send Message
+                    <Send size={16} />
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+
+          {/*============== Contact Information ==============*/}
+          <div className="flex flex-col gap-5">
+            {/*========= Intro Card ===========*/}
+            <div className="rounded-2xl border border-slate-200 bg-primary p-6 text-white sm:p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue">
+                Open to opportunities
+              </p>
+
+              <h3 className="mt-3 text-2xl font-bold">
+                Let&apos;s build something useful together.
+              </h3>
+
+              <p className="mt-3 text-sm leading-6 text-white/65">
+                I&apos;m open to freelance projects, remote opportunities, and
+                meaningful collaborations.
+              </p>
             </div>
-        </section>
-    );
+
+            {/*============== Contact Details ==============*/}
+            <div className="space-y-5">
+              {/* ==========Email ============*/}
+              <Link
+                href="mailto:kajalrekha555@gmail.com"
+                className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30 hover:shadow-sm"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue/10 text-blue">
+                  <Mail size={19} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-xs text-slate-400">Email</p>
+
+                  <p className="mt-1 truncate text-sm font-semibold text-primary transition-colors group-hover:text-blue">
+                    kajalrekha555@gmail.com
+                  </p>
+                </div>
+              </Link>
+
+              {/* ====================WhatsApp ================*/}
+              <Link
+                href="https://wa.me/8801883556564"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30 hover:shadow-sm"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue/10 text-blue">
+                  <Phone size={19} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400">Phone / WhatsApp</p>
+
+                  <p className="mt-1 text-sm font-semibold text-primary transition-colors group-hover:text-blue">
+                    +880 1883556564
+                  </p>
+                </div>
+              </Link>
+
+              {/*================= Location ===================*/}
+              <div className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue/10 text-blue">
+                  <MapPin size={19} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400">Location</p>
+
+                  <p className="mt-1 text-sm font-semibold text-primary">
+                    Bangladesh · Remote
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/*================== Social Links ==============*/}
+            {/* <div className="rounded-xl border border-slate-200 bg-white p-5">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
+                Find me online
+              </p>
+
+              <div className="flex gap-2">
+                <Link
+                  href="https://www.linkedin.com/in/kajal-rekha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-50 text-slate-500 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/10 hover:text-blue"
+                >
+                  <Linkedin size={18} />
+                </Link>
+
+                <Link
+                  href="https://github.com/kajal-rekha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-50 text-slate-500 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/10 hover:text-blue"
+                >
+                  <Github size={18} />
+                </Link>
+
+                <Link
+                  href="https://x.com/kajalreka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X / Twitter"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-50 text-slate-500 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/10 hover:text-blue"
+                >
+                  <Twitter size={18} />
+                </Link>
+              </div>
+            </div> */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;

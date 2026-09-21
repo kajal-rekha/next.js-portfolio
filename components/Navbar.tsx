@@ -1,174 +1,148 @@
-import { Menu, X } from "lucide-react";
+"use client";
+
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+const navLinks = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Projects",
+    href: "#projects",
+  },
+  {
+    label: "Skills",
+    href: "#skills",
+  },
+  {
+    label: "About",
+    href: "#about",
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+  },
+];
+
 const Navbar = () => {
-    const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
-    const handleToggle = () => {
-        setToggle((prev) => !prev);
-    };
-    const handleOpen = () => {
-        setToggle(false);
-    };
+  const handleToggle = () => {
+    setToggle((prev) => !prev);
+  };
 
-    return (
-        <nav>
-            <div className="w-full navbar h-20 shadow-lg flex bg-gray-100 fixed top-0 left-0 right-0 z-[99] rounded-2xl">
-                <div className="wrapper flex justify-between items-center">
-                    <div className="logo">
-                        <Link
-                            href="/"
-                            className="text-lg md:text-xl text-primary font-semibold font-mono"
-                        >
-                            Kajal Rekha
-                        </Link>
-                    </div>
+  const handleOpen = () => {
+    setToggle(false);
+  };
 
-                    <div className="hidden md:block">
-                        <div className="flex gap-5 justify-between ">
-                            <div className="flex gap-5 justify-between">
+  return (
+    <nav className="relative">
+      {/* ================= DESKTOP / MAIN NAVBAR ================= */}
+      <div className="fixed left-0 right-0 top-0 z-[99] h-[72px] border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-md">
+        <div className="wrapper flex h-full items-center justify-between">
+          {/* ================= LOGO ================= */}
+          <div>
+            <Link
+              href="/"
+              onClick={handleOpen}
+              aria-label="Kajal Rekha - Home"
+              className="font-mono text-xl font-bold tracking-tight text-primary transition-colors duration-200 hover:text-blue md:text-2xl"
+            >
+              &lt;KR/&gt;
+            </Link>
+          </div>
 
-                                
-                                <Link
-                                    href="/"
-                                    className="text-primary hover:text-blue text-sm md:text-[1rem] font-semibold eq"
-                                >
-                                    Home
-                                </Link>
-                                <Link
-                                    href="/projects"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold eq"
-                                >
-                                    Projects
-                                </Link>
+          {/* ================= DESKTOP NAV ================= */}
+          <div className="hidden md:block">
+            <div className="flex items-center gap-7">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-blue"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-                                <Link
-                                    href="#skills"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1rem] font-semibold  eq"
-                                >
-                                    Skills
-                                </Link>
+          {/* ================= RESUME ================= */}
+          <div className="hidden md:block">
+            <Link
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-light transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90"
+            >
+              Download Resume
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
 
-                                <Link
-                                    href="#about"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold  eq"
-                                >
-                                    About
-                                </Link>
-                                <Link
-                                    href="/blog"
-                                    className="text-primary hover:text-blue text-sm md:text-[1rem]  font-semibold eq"
-                                >
-                                    Blog
-                                </Link>
+          {/* ================= MOBILE MENU BUTTON ================= */}
+          <div className="md:hidden">
+            <button
+              type="button"
+              onClick={handleToggle}
+              aria-label={toggle ? "Close menu" : "Open menu"}
+              aria-expanded={toggle}
+              className="flex h-10 w-10 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-slate-100"
+            >
+              {toggle ? <X size={23} /> : <Menu size={23} />}
+            </button>
+          </div>
+        </div>
+      </div>
 
-                                <Link
-                                    href="#contact"
-                                    className="text-primary hover:text-blue text-sm  md:text-[1rem]  font-semibold eq"
-                                >
-                                    Contact
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="hidden md:block ">
-                        <Link
-                            href="/resume.pdf"
-                            className="text-sm py-3 px-5 text-gray  font-semibold bg-primary  rounded-md hover:bg-primary/90 eq"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            Download Resume
-                        </Link>
-                    </div>
+      {/* ================= MOBILE MENU ================= */}
+      {toggle && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-[97] bg-slate-900/20 md:hidden"
+            onClick={handleOpen}
+          />
 
-                    {/************ toggle button **************/}
-                    <div className="flex md:hidden">
-                        <button
-                            type="button"
-                            onClick={handleToggle}
-                            className="inline-flex items-center justify-center focus:outline-none text-xl  z-[99]"
-                        >
-                            {toggle === true ? <X /> : <Menu />}
-                        </button>
-                    </div>
+          {/* Menu */}
+          <div className="fixed inset-x-0 top-[72px] z-[98] border-b border-slate-200 bg-white shadow-lg md:hidden">
+            <div className="wrapper py-8">
+              <div className="flex flex-col items-center gap-6">
+                {/* Navigation Links */}
+                <div className="flex flex-col items-center gap-5">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={handleOpen}
+                      className="text-base font-medium text-slate-700 transition-colors duration-200 hover:text-blue"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
+
+                {/* Resume */}
+                <Link
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleOpen}
+                  className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-light transition-all duration-200 hover:bg-primary/90"
+                >
+                  Download Resume
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
             </div>
-            
-
-            {/************ mobile menu *************/}
-            <div>
-                {toggle ? (
-                    <div className="md:hidden">
-                        <div className="fixed inset-x-0 top-20 bottom-0 pt-5 bg-blue shadow-lg z-[98] overflow-auto">
-                            <div className="flex flex-col gap-5 items-center h-full  pt-10 ">
-                                <div className="flex flex-col gap-5 items-center">
-                                    <Link
-                                        href="#home"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        Home
-                                    </Link>
-                                    <Link
-                                        href="#projects"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        Projects
-                                    </Link>
-
-                                    <Link
-                                        href="/blog"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        Blog
-                                    </Link>
-
-                                    <Link
-                                        href="#skills"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        Skills
-                                    </Link>
-                                    <Link
-                                        href="#about"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        About
-                                    </Link>
-
-                                    <Link
-                                        href="#contact"
-                                        onClick={handleOpen}
-                                        className="text-light hover:text-light/80 text-sm  md:text-[1.2rem] font-semibold  eq"
-                                    >
-                                        Contact
-                                    </Link>
-                                </div>
-
-                                <div className="mt-2">
-                                    <Link
-                                        href="/resume.pdf"
-                                        onClick={handleOpen}
-                                        className=" text-sm py-2.5 px-4 text-gray  font-semibold  bg-primary rounded-md hover:bg-primary/80 eq"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        Download Resume
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ) : null}
-            </div>
-        </nav>
-    );
+          </div>
+        </>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;
