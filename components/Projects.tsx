@@ -3,8 +3,7 @@
 import { ProjectsData } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { ArrowUpRight, ExternalLink, Github, Rocket } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 type Project = (typeof ProjectsData)[number];
 
@@ -12,28 +11,21 @@ type ProjectsProps = {
   limit?: number;
 };
 
-const filters = [
-  "All Projects",
-  "SaaS",
-  "eCommerce",
-  "Full-Stack",
-  "AI",
-  "Dashboard",
-];
-
 const Projects = ({ limit }: ProjectsProps) => {
-  const [activeFilter, setActiveFilter] = useState("All Projects");
 
   // ================= CATEGORY MATCHING =================
   const getCategory = (project: Project) => {
     const title = project.title.toLowerCase();
-    const tags = project.tags.join(" ").toLowerCase();
 
-    if (project.isAI || title.includes("ai")) {
+    if (project.category) {
+      return project.category;
+    }
+
+    if (project.isAI) {
       return "AI";
     }
 
-    if (title.includes("subnivo") || tags.includes("stripe")) {
+    if (title.includes("subnivo")) {
       return "SaaS";
     }
 
@@ -54,23 +46,9 @@ const Projects = ({ limit }: ProjectsProps) => {
     return "Full-Stack";
   };
 
-  // ================= FILTER =================
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "All Projects") {
-      return ProjectsData;
-    }
-
-    return ProjectsData.filter(
-      (project) => getCategory(project) === activeFilter,
-    );
-  }, [activeFilter]);
-
   // ================= LIMIT =================
 
-  const projectsToShow = limit
-    ? filteredProjects.slice(0, limit)
-    : filteredProjects;
+  const projectsToShow = limit ? ProjectsData.slice(0, limit) : ProjectsData;
 
   const [featuredProject, ...supportingProjects] = projectsToShow;
 
@@ -104,7 +82,7 @@ const Projects = ({ limit }: ProjectsProps) => {
             compact ? "px-3.5" : ""
           }`}
         >
-          Live Demo
+          Live Site
           <ExternalLink size={13} />
         </Link>
 
@@ -112,12 +90,9 @@ const Projects = ({ limit }: ProjectsProps) => {
           href={project.frontEndLink}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-white ${
-            compact ? "px-3.5" : ""
-          }`}
+          className="hidden items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue sm:inline-flex"
         >
-          GitHub
-          <Github size={14} />
+          Frontend Code
         </Link>
 
         {project.backendLink && (
@@ -125,10 +100,9 @@ const Projects = ({ limit }: ProjectsProps) => {
             href={project.backendLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue sm:inline-flex"
+            className="hidden items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue sm:inline-flex"
           >
-            Backend
-            <ArrowUpRight size={13} />
+            Backend Code
           </Link>
         )}
       </div>
@@ -140,8 +114,8 @@ const Projects = ({ limit }: ProjectsProps) => {
       <div className="wrapper">
         {/* ================= SECTION HEADER ================= */}
 
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between ">
+          <div className="mb-5">
             <p className="section-kicker">Selected Work</p>
 
             <h2 className="section-title text-left md:text-left">
@@ -154,7 +128,7 @@ const Projects = ({ limit }: ProjectsProps) => {
             </p>
           </div>
 
-          <Link
+          {/* <Link
             href="https://github.com/kajal-rekha"
             target="_blank"
             rel="noopener noreferrer"
@@ -162,30 +136,7 @@ const Projects = ({ limit }: ProjectsProps) => {
           >
             Explore GitHub
             <Github size={17} />
-          </Link>
-        </div>
-
-        {/* ================= FILTERS ================= */}
-
-        <div className="mt-8 flex flex-wrap gap-2">
-          {filters.map((filter) => {
-            const isActive = activeFilter === filter;
-
-            return (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-200 ${
-                  isActive
-                    ? "border-blue bg-blue text-white shadow-md shadow-blue/20"
-                    : "border-slate-200 bg-white text-slate-500 hover:border-blue hover:text-blue"
-                }`}
-              >
-                {filter}
-              </button>
-            );
-          })}
+          </Link> */}
         </div>
 
         {/* ================= PROJECTS ================= */}
@@ -198,16 +149,17 @@ const Projects = ({ limit }: ProjectsProps) => {
               <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
                 {/*================ IMAGE============== */}
 
-                <div className="relative min-h-[280px] bg-slate-50 p-4 sm:p-6 lg:min-h-[390px]">
+                <div className="relative  bg-slate-50 p-4 sm:p-6 h-full">
                   {featuredProject.image && (
-                    <div className="relative h-full min-h-[250px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+                    <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
                       <Image
                         src={featuredProject.image}
-                        alt={`${featuredProject.title} project screenshot`}
-                        fill
+                        alt={`${featuredProject.title}`}
+                        width={1600}
+                        height={2000}
                         priority
                         sizes="(max-width: 1024px) 100vw, 55vw"
-                        className="object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
+                        className="object-cover transition-transform duration-500 hover:scale-[1.02]"
                       />
                     </div>
                   )}
@@ -226,13 +178,13 @@ const Projects = ({ limit }: ProjectsProps) => {
                     </span>
                   </div>
 
+                  <span className="mt-5 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
+                    {getCategory(featuredProject)}
+                  </span>
+
                   <h3 className="mt-5 text-2xl font-bold tracking-tight text-primary sm:text-3xl">
                     {featuredProject.title}
                   </h3>
-
-                  <p className="mt-2 text-sm font-semibold text-blue">
-                    {getCategory(featuredProject)} · Full-Stack
-                  </p>
 
                   <p className="mt-4 max-w-xl text-sm leading-6 text-slate-500">
                     {featuredProject.desc}
@@ -240,7 +192,7 @@ const Projects = ({ limit }: ProjectsProps) => {
 
                   {/*================ ==================PROJECT HIGHLIGHTS =================*/}
 
-                  <div className="mt-6 grid gap-2.5 text-xs text-slate-600 sm:grid-cols-2">
+                  {/* <div className="mt-6 grid gap-2.5 text-xs text-slate-600 sm:grid-cols-2">
                     {featuredProject.tags.slice(0, 4).map((tag) => (
                       <div
                         key={tag}
@@ -250,7 +202,7 @@ const Projects = ({ limit }: ProjectsProps) => {
                         {tag}
                       </div>
                     ))}
-                  </div>
+                  </div> */}
 
                   {/*========== TAGS ==============*/}
 
@@ -277,7 +229,7 @@ const Projects = ({ limit }: ProjectsProps) => {
                     {/*============ IMAGE ============*/}
 
                     {project.image && (
-                      <div className="relative h-44 overflow-hidden bg-slate-100">
+                      <div className="relative h-56 overflow-hidden bg-slate-100 md:h-64">
                         <Image
                           src={project.image}
                           alt={`${project.title} project screenshot`}
@@ -295,38 +247,17 @@ const Projects = ({ limit }: ProjectsProps) => {
                     {/*================ =======CONTENT =================*/}
 
                     <div className="flex flex-1 flex-col p-5">
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-600">
-                          {getCategory(project)}
-                        </p>
+                      <span className="mb-2 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
+                        {getCategory(project)}
+                      </span>
 
-                        {project.isAI && (
-                          <span className="rounded-full bg-violet-50 px-2.5 py-1 text-[10px] font-semibold text-violet-600">
-                            AI Powered
-                          </span>
-                        )}
-                      </div>
-
-                      <h3 className="mt-2 text-lg font-bold leading-snug text-primary transition-colors duration-200 group-hover:text-blue">
+                      <h3 className="text-lg font-bold leading-snug text-primary transition-colors duration-200 group-hover:text-blue">
                         {project.title}
                       </h3>
 
                       <p className="mt-2 line-clamp-3 text-sm leading-5 text-slate-500">
                         {project.desc}
                       </p>
-
-                      {/*================ TECH PREVIEW =================*/}
-
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] font-medium text-slate-400"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
 
                       {/*================ TAGS =================*/}
 
@@ -355,18 +286,7 @@ const Projects = ({ limit }: ProjectsProps) => {
 
         {/* ================= VIEW ALL ================= */}
 
-        {limit && activeFilter === "All Projects" ? (
-          <div className="mt-10">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue"
-            >
-              <Rocket size={16} />
-              View All Projects
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-        ) : null}
+        
       </div>
     </section>
   );

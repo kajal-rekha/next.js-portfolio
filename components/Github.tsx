@@ -6,7 +6,7 @@ import {
   FolderGit2,
   Github as GithubIcon,
   GitBranch,
-  Code2,
+  Star,
 } from "lucide-react";
 
 const githubStats = [
@@ -23,10 +23,10 @@ const githubStats = [
     icon: GitBranch,
   },
   {
-    value: "10+",
-    title: "Featured Projects",
-    description: "Full-stack projects built with modern technologies",
-    icon: Code2,
+    value: "171",
+    title: "GitHub Stars",
+    description: "Stars earned across my GitHub repositories",
+    icon: Star,
   },
 ];
 
@@ -39,7 +39,7 @@ const Github = () => {
           <p className="section-kicker">GitHub</p>
 
           <h2 className="section-title text-left md:text-left">
-            Code, Projects & Open Source
+            Code & Projects
           </h2>
 
           <p className="section-copy">
@@ -82,7 +82,7 @@ const Github = () => {
               rel="noopener noreferrer"
               className="group inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-light transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue hover:shadow-lg hover:shadow-blue/20"
             >
-              Visit Profile
+              View GitHub Profile
               <ArrowUpRight
                 size={17}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -122,38 +122,6 @@ const Github = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/*============= Bottom CTA =============*/}
-        <div className="mt-5 flex flex-col justify-between gap-5 rounded-2xl border border-primary/10 bg-primary p-6 text-light sm:flex-row sm:items-center sm:p-7">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-light/40">
-              Explore my work
-            </p>
-
-            <h3 className="mt-2 text-lg font-semibold">
-              Interested in how I build things?
-            </h3>
-
-            <p className="mt-1 max-w-xl text-sm leading-6 text-light/60">
-              Take a look at my repositories to explore the code behind my
-              projects.
-            </p>
-          </div>
-
-          <Link
-            href="https://github.com/kajal-rekha"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-light px-5 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:bg-blue hover:text-light hover:shadow-lg hover:shadow-blue/20"
-          >
-            <GithubIcon size={18} />
-            Explore GitHub
-            <ArrowUpRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
         </div>
       </div>
     </section>

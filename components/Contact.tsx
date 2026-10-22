@@ -1,31 +1,64 @@
 "use client";
 
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 import { FormEvent, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 import {
   Mail,
   Phone,
   MapPin,
   Send,
-  Linkedin,
-  Github,
-  Twitter,
 } from "lucide-react";
 
 const Contact = () => {
-  const [sent, setSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    const form = e.currentTarget;
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    setTimeout(() => {
-      setSent(false);
-    }, 4000);
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("The contact form is not configured yet. Please try again later.");
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form, publicKey);
+      form.reset();
+      toast.success("Message sent successfully!");
+    } catch (error) {
+      console.error("EmailJS contact form submission failed:", error);
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "text" in error &&
+        typeof error.text === "string"
+      ) {
+        const status =
+          "status" in error && typeof error.status === "number"
+            ? `${error.status}: `
+            : "";
+        toast.error(`EmailJS error ${status}${error.text}`);
+      } else if (error instanceof Error) {
+        toast.error(`Could not send your message: ${error.message}`);
+      } else {
+        toast.error("Could not send your message. Please try again.");
+      }
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <section id="contact" className="section-shell bg-[#f8f9fc]">
+      <Toaster position="top-right" />
+
       <div className="wrapper">
         {/*============== Section Header ==============*/}
         <div className="mb-12 max-w-2xl">
@@ -45,93 +78,77 @@ const Contact = () => {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           {/*============= Contact Form ============*/}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_35px_rgba(33,24,68,0.05)] sm:p-8">
-            {sent ? (
-              <div className="flex min-h-[350px] flex-col items-center justify-center text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue/10 text-2xl text-blue">
-                  ✓
-                </div>
-
-                <h3 className="mt-5 text-xl font-bold text-primary">
-                  Message sent!
-                </h3>
-
-                <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
-                  Thanks for reaching out. I&apos;ll get back to you as soon as
-                  possible.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/*============== Name & Email ==============*/}
-                <div className="flex flex-col gap-5">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-2 block text-sm font-semibold text-primary"
-                    >
-                      Name
-                    </label>
-
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Your name"
-                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2 block text-sm font-semibold text-primary"
-                    >
-                      Email
-                    </label>
-
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@example.com"
-                      className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
-                    />
-                  </div>
-                </div>
-
-                {/*============== Message ==============*/}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/*============== Name & Email ==============*/}
+              <div className="flex flex-col gap-5">
                 <div>
                   <label
-                    htmlFor="message"
+                    htmlFor="name"
                     className="mb-2 block text-sm font-semibold text-primary"
                   >
-                    Message
+                    Name
                   </label>
 
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
                     required
-                    placeholder="Tell me about your project..."
-                    className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                    placeholder="Your name"
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
                   />
                 </div>
 
-                {/*================ Submit ==============*/}
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <button
-                    type="submit"
-                    className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-blue px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/90"
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-semibold text-primary"
                   >
-                    Send Message
-                    <Send size={16} />
-                  </button>
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="hello@gmail.com"
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                  />
                 </div>
-              </form>
-            )}
+              </div>
+
+              {/*============== Message ==============*/}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-sm font-semibold text-primary"
+                >
+                  Message
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="Tell me about your..."
+                  className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-primary outline-none transition placeholder:text-slate-400 focus:border-blue focus:bg-white focus:ring-2 focus:ring-blue/10"
+                />
+              </div>
+
+              {/*================ Submit ==============*/}
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  disabled={isSending}
+                  className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-blue px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/90"
+                >
+                  {isSending ? "Sending..." : "Send Message"}
+                  {!isSending && <Send size={16} />}
+                </button>
+              </div>
+            </form>
           </div>
 
           {/*============== Contact Information ==============*/}
@@ -139,16 +156,15 @@ const Contact = () => {
             {/*========= Intro Card ===========*/}
             <div className="rounded-2xl border border-slate-200 bg-primary p-6 text-white sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue">
-                Open to opportunities
+                Available for Opportunities
               </p>
 
               <h3 className="mt-3 text-2xl font-bold">
-                Let&apos;s build something useful together.
+                Let&apos;s build something great together.
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-white/65">
-                I&apos;m open to freelance projects, remote opportunities, and
-                meaningful collaborations.
+                Interested in remote opportunities and building impactful web applications.
               </p>
             </div>
 

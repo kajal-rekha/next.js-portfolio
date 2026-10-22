@@ -12,7 +12,7 @@ const HomePage = () => {
       <Hero />
       <main>
         {/* <Services /> */}
-        <Projects limit={6} />
+        <Projects />
         <Skills />
         <About />
         <Github />
