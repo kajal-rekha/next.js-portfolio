@@ -3,7 +3,7 @@
 import { ProjectsData } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 type Project = (typeof ProjectsData)[number];
 
