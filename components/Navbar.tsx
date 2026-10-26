@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="fixed left-0 right-0 top-0 z-[99] h-[72px] border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-md">
         <div className="wrapper flex h-full items-center justify-between">
           {/* ================= LOGO ================= */}
-          <div>
+          <div data-aos="fade-right" data-aos-duration="1000">
             <Link
               href="/"
               onClick={handleOpen}
@@ -56,13 +56,13 @@ const Navbar = () => {
           </div>
 
           {/* ================= DESKTOP NAV ================= */}
-          <div className="hidden md:block">
+          <div data-aos="fade-down" data-aos-duration="1000" className="hidden md:block">
             <div className="flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-blue"
+                  className="text-[15px] font-medium text-slate-600 transition-colors duration-200 hover:text-blue"
                 >
                   {link.label}
                 </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
 
           {/* ================= RESUME ================= */}
-          <div className="hidden md:block">
+          <div data-aos="fade-left" data-aos-duration="1000" className="hidden md:block">
             <Link
               href="/resume.pdf"
               target="_blank"
@@ -108,7 +108,9 @@ const Navbar = () => {
           />
 
           {/* Menu */}
-          <div className="fixed inset-x-0 top-[72px] z-[98] border-b border-slate-200 bg-white shadow-lg md:hidden">
+          <div
+            className="fixed inset-x-0 bottom-0 top-[72px] z-[98] overflow-y-auto bg-white shadow-lg md:hidden"
+          >
             <div className="wrapper py-8">
               <div className="flex flex-col items-center gap-6">
                 {/* Navigation Links */}

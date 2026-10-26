@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const posts = [
     {
         title: "Node.js & Django — Web development",
@@ -55,7 +57,8 @@ export default function BlogPage() {
 
                 <div className="mt-8 grid gap-6">
                     {posts.map((p) => (
-                        <article key={p.url} className="card">
+                        <Reveal key={p.url}>
+                          <article className="card">
                             <h2 className="text-xl font-semibold text-primary">
                                 {p.title}
                             </h2>
@@ -70,7 +73,8 @@ export default function BlogPage() {
                                     Read on LinkedIn
                                 </a>
                             </div>
-                        </article>
+                          </article>
+                        </Reveal>
                     ))}
                 </div>
             </div>

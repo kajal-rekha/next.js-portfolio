@@ -4,6 +4,7 @@ import { ProjectsData } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import Reveal from "./Reveal";
 
 type Project = (typeof ProjectsData)[number];
 
@@ -12,7 +13,6 @@ type ProjectsProps = {
 };
 
 const Projects = ({ limit }: ProjectsProps) => {
-
   // ================= CATEGORY MATCHING =================
   const getCategory = (project: Project) => {
     const title = project.title.toLowerCase();
@@ -90,7 +90,7 @@ const Projects = ({ limit }: ProjectsProps) => {
           href={project.frontEndLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue sm:inline-flex"
+          className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue"
         >
           Frontend Code
         </Link>
@@ -100,7 +100,7 @@ const Projects = ({ limit }: ProjectsProps) => {
             href={project.backendLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue sm:inline-flex"
+            className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-blue hover:text-blue"
           >
             Backend Code
           </Link>
@@ -111,24 +111,25 @@ const Projects = ({ limit }: ProjectsProps) => {
 
   return (
     <section id="projects" className="section-shell bg-white">
-      <div className="wrapper">
-        {/* ================= SECTION HEADER ================= */}
+      <Reveal>
+        <div className="wrapper">
+          {/* ================= SECTION HEADER ================= */}
 
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between ">
-          <div className="mb-5">
-            <p className="section-kicker">Selected Work</p>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between ">
+            <div className="mb-5">
+              <p className="section-kicker">Selected Work</p>
 
-            <h2 className="section-title text-left md:text-left">
-              Projects I&apos;ve Built
-            </h2>
+              <h2 className="section-title text-left md:text-left">
+                Projects I&apos;ve Built
+              </h2>
 
-            <p className="section-copy max-w-xl">
-              A selection of full-stack applications, SaaS products, and
-              real-world web projects I&apos;ve designed and developed.
-            </p>
-          </div>
+              <p className="section-copy max-w-xl">
+                A selection of full-stack applications, SaaS products, and
+                real-world web projects I&apos;ve designed and developed.
+              </p>
+            </div>
 
-          {/* <Link
+            {/* <Link
             href="https://github.com/kajal-rekha"
             target="_blank"
             rel="noopener noreferrer"
@@ -137,62 +138,62 @@ const Projects = ({ limit }: ProjectsProps) => {
             Explore GitHub
             <Github size={17} />
           </Link> */}
-        </div>
+          </div>
 
-        {/* ================= PROJECTS ================= */}
+          {/* ================= PROJECTS ================= */}
 
-        {featuredProject ? (
-          <>
-            {/* ================= FEATURED PROJECT ================= */}
+          {featuredProject ? (
+            <>
+              {/* ================= FEATURED PROJECT ================= */}
 
-            <article className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_40px_rgba(33,24,68,0.06)]">
-              <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-                {/*================ IMAGE============== */}
+              <article className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_40px_rgba(33,24,68,0.06)]">
+                <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
+                  {/*================ IMAGE============== */}
 
-                <div className="relative  bg-slate-50 p-4 sm:p-6 h-full">
-                  {featuredProject.image && (
-                    <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
-                      <Image
-                        src={featuredProject.image}
-                        alt={`${featuredProject.title}`}
-                        width={1600}
-                        height={2000}
-                        priority
-                        sizes="(max-width: 1024px) 100vw, 55vw"
-                        className="object-cover transition-transform duration-500 hover:scale-[1.02]"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                {/*================ CONTENT =================*/}
-
-                <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-md bg-blue/10 px-3 py-1 text-xs font-bold text-blue">
-                      01
-                    </span>
-
-                    <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
-                      ★ Featured Project
-                    </span>
+                  <div className="relative  bg-slate-50 p-4 sm:p-6 h-full">
+                    {featuredProject.image && (
+                      <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+                        <Image
+                          src={featuredProject.image}
+                          alt={`${featuredProject.title}`}
+                          width={1600}
+                          height={2000}
+                          priority
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+                        />
+                      </div>
+                    )}
                   </div>
 
-                  <span className="mt-5 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
-                    {getCategory(featuredProject)}
-                  </span>
+                  {/*================ CONTENT =================*/}
 
-                  <h3 className="mt-5 text-2xl font-bold tracking-tight text-primary sm:text-3xl">
-                    {featuredProject.title}
-                  </h3>
+                  <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="rounded-md bg-blue/10 px-3 py-1 text-xs font-bold text-blue">
+                        01
+                      </span>
 
-                  <p className="mt-4 max-w-xl text-sm leading-6 text-slate-500">
-                    {featuredProject.desc}
-                  </p>
+                      <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">
+                        ★ Featured Project
+                      </span>
+                    </div>
 
-                  {/*================ ==================PROJECT HIGHLIGHTS =================*/}
+                    <span className="mt-5 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
+                      {getCategory(featuredProject)}
+                    </span>
 
-                  {/* <div className="mt-6 grid gap-2.5 text-xs text-slate-600 sm:grid-cols-2">
+                    <h3 className="mt-5 text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+                      {featuredProject.title}
+                    </h3>
+
+                    <p className="mt-4 max-w-xl text-sm leading-6 text-slate-500">
+                      {featuredProject.desc}
+                    </p>
+
+                    {/*================ ==================PROJECT HIGHLIGHTS =================*/}
+
+                    {/* <div className="mt-6 grid gap-2.5 text-xs text-slate-600 sm:grid-cols-2">
                     {featuredProject.tags.slice(0, 4).map((tag) => (
                       <div
                         key={tag}
@@ -204,90 +205,90 @@ const Projects = ({ limit }: ProjectsProps) => {
                     ))}
                   </div> */}
 
-                  {/*========== TAGS ==============*/}
+                    {/*========== TAGS ==============*/}
 
-                  <div className="mt-6">
-                    {renderTags(featuredProject.tags, 6)}
-                  </div>
-
-                  {/*=========== ACTIONS ===========*/}
-
-                  <div className="mt-7">{renderActions(featuredProject)}</div>
-                </div>
-              </div>
-            </article>
-
-            {/* ================= SUPPORTING PROJECTS ================= */}
-
-            {supportingProjects.length > 0 && (
-              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {supportingProjects.map((project: Project, index) => (
-                  <article
-                    key={project.title}
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_14px_35px_rgba(33,24,68,0.08)]"
-                  >
-                    {/*============ IMAGE ============*/}
-
-                    {project.image && (
-                      <div className="relative h-56 overflow-hidden bg-slate-100 md:h-64">
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} project screenshot`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        />
-
-                        <span className="absolute left-4 top-4 rounded-md border border-slate-200 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-primary shadow-sm">
-                          {String(index + 2).padStart(2, "0")}
-                        </span>
-                      </div>
-                    )}
-
-                    {/*================ =======CONTENT =================*/}
-
-                    <div className="flex flex-1 flex-col p-5">
-                      <span className="mb-2 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
-                        {getCategory(project)}
-                      </span>
-
-                      <h3 className="text-lg font-bold leading-snug text-primary transition-colors duration-200 group-hover:text-blue">
-                        {project.title}
-                      </h3>
-
-                      <p className="mt-2 line-clamp-3 text-sm leading-5 text-slate-500">
-                        {project.desc}
-                      </p>
-
-                      {/*================ TAGS =================*/}
-
-                      <div className="mt-auto pt-5">
-                        {renderTags(project.tags, 4)}
-                      </div>
-
-                      {/*================ ACTIONS =================*/}
-
-                      <div className="mt-5">{renderActions(project, true)}</div>
+                    <div className="mt-6">
+                      {renderTags(featuredProject.tags, 6)}
                     </div>
-                  </article>
-                ))}
-              </div>
-            )}
-          </>
-        ) : (
-          /* ================= EMPTY STATE ================= */
 
-          <div className="mt-8 rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-16 text-center">
-            <p className="text-sm font-medium text-slate-500">
-              No projects found in this category.
-            </p>
-          </div>
-        )}
+                    {/*=========== ACTIONS ===========*/}
 
-        {/* ================= VIEW ALL ================= */}
+                    <div className="mt-7">{renderActions(featuredProject)}</div>
+                  </div>
+                </div>
+              </article>
 
-        
-      </div>
+              {/* ================= SUPPORTING PROJECTS ================= */}
+
+              {supportingProjects.length > 0 && (
+                <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {supportingProjects.map((project: Project, index) => (
+                    <Reveal key={project.title}>
+                      <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_14px_35px_rgba(33,24,68,0.08)]">
+                        {/*============ IMAGE ============*/}
+
+                        {project.image && (
+                          <div className="relative h-56 overflow-hidden bg-slate-100 md:h-64">
+                            <Image
+                              src={project.image}
+                              alt={`${project.title} project screenshot`}
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                            />
+
+                            <span className="absolute left-4 top-4 rounded-md border border-slate-200 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-primary shadow-sm">
+                              {String(index + 2).padStart(2, "0")}
+                            </span>
+                          </div>
+                        )}
+
+                        {/*================ =======CONTENT =================*/}
+
+                        <div className="flex flex-1 flex-col p-5">
+                          <span className="mb-2 w-fit rounded-full bg-blue/10 px-2.5 py-1 text-[11px] font-semibold text-blue">
+                            {getCategory(project)}
+                          </span>
+
+                          <h3 className="text-lg font-bold leading-snug text-primary transition-colors duration-200 group-hover:text-blue">
+                            {project.title}
+                          </h3>
+
+                          <p className="mt-2 line-clamp-3 text-sm leading-5 text-slate-500">
+                            {project.desc}
+                          </p>
+
+                          {/*================ TAGS =================*/}
+
+                          <div className="mt-auto pt-5">
+                            {renderTags(project.tags, 4)}
+                          </div>
+
+                          {/*================ ACTIONS =================*/}
+
+                          <div className="mt-5">
+                            {renderActions(project, true)}
+                          </div>
+                        </div>
+                      </article>
+                    </Reveal>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            /* ================= EMPTY STATE ================= */
+
+            <div className="mt-8 rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-16 text-center">
+              <p className="text-sm font-medium text-slate-500">
+                No projects found in this category.
+              </p>
+            </div>
+          )}
+
+          {/* ================= VIEW ALL ================= */}
+        </div>
+      </Reveal>
     </section>
   );
 };
