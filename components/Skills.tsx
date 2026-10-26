@@ -35,7 +35,6 @@ import {
   SiPrisma,
   SiRedux,
   SiRender,
-  SiSass,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
