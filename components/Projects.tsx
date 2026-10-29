@@ -22,7 +22,7 @@ const Projects = ({ limit }: ProjectsProps) => {
     }
 
     if (project.isAI) {
-      return "AI";
+      return "Chatbot";
     }
 
     if (title.includes("subnivo")) {

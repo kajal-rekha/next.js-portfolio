@@ -58,7 +58,7 @@ export const ProjectsData = [
     frontEndLink: "https://github.com/kajal-rekha/luminex-client.git",
     backendLink: "https://github.com/kajal-rekha/luminex-server.git",
     image:
-      "https://res.cloudinary.com/dh0ado2ir/image/upload/v1792686591/luminex_dc686f.png",
+      "https://res.cloudinary.com/dh0ado2ir/image/upload/v1793270852/luminex3_odgxql.png",
   },
   {
     title: "Cordemy - An Online Learning Platform",
@@ -78,7 +78,7 @@ export const ProjectsData = [
     frontEndLink: "https://github.com/kajal-rekha/cordemy.git",
     backendLink: "https://github.com/kajal-rekha/cordemy.git",
     image:
-      "https://res.cloudinary.com/dh0ado2ir/image/upload/v1687459898/Screenshot_53_lcf8zk.png",
+      "https://res.cloudinary.com/dh0ado2ir/image/upload/v1793271049/cordemy_iqyppb.png",
   },
   {
     title: "Celestia - An AI powered chat assistance",

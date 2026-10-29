@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 
 const HomePage = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
       <Hero />
       <main>
         {/* <Services /> */}
