@@ -18,7 +18,7 @@ const githubStats = [
     icon: FolderGit2,
   },
   {
-    value: "1,680",
+    value: "1,776",
     title: "Total Contributions",
     description: "Consistent coding activity across GitHub",
     icon: GitBranch,
