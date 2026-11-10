@@ -56,7 +56,11 @@ const Navbar = () => {
           </div>
 
           {/* ================= DESKTOP NAV ================= */}
-          <div data-aos="fade-down" data-aos-duration="1000" className="hidden md:block">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            className="hidden md:block"
+          >
             <div className="flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
@@ -71,9 +75,13 @@ const Navbar = () => {
           </div>
 
           {/* ================= RESUME ================= */}
-          <div data-aos="fade-left" data-aos-duration="1000" className="hidden md:block">
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            className="hidden md:block"
+          >
             <Link
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1_n-b4Kgcg-SpadZzCLomEr1Wk-N8kK0y/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-light transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90"
@@ -108,9 +116,7 @@ const Navbar = () => {
           />
 
           {/* Menu */}
-          <div
-            className="fixed inset-x-0 bottom-0 top-[72px] z-[98] overflow-y-auto bg-white shadow-lg md:hidden"
-          >
+          <div className="fixed inset-x-0 bottom-0 top-[72px] z-[98] overflow-y-auto bg-white shadow-lg md:hidden">
             <div className="wrapper py-8">
               <div className="flex flex-col items-center gap-6">
                 {/* Navigation Links */}

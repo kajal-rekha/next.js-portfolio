@@ -140,7 +140,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSending}
-                    className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-blue px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue/90"
+                    className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90"
                   >
                     {isSending ? "Sending..." : "Send Message"}
                     {!isSending && <Send size={16} />}
@@ -170,9 +170,11 @@ const Contact = () => {
               {/*============== Contact Details ==============*/}
               <div className="space-y-5">
                 {/* ==========Email ============*/}
-                <Link
-                  href="mailto:kajalrekha555@gmail.com"
-                  className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30 hover:shadow-sm"
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=kajalrekha555%40gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex cursor-pointer items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue/30 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue/10 text-blue">
                     <Mail size={19} />
@@ -185,7 +187,7 @@ const Contact = () => {
                       kajalrekha555@gmail.com
                     </p>
                   </div>
-                </Link>
+                </a>
 
                 {/* ====================WhatsApp ================*/}
                 <Link
@@ -217,7 +219,7 @@ const Contact = () => {
                     <p className="text-xs text-slate-400">Location</p>
 
                     <p className="mt-1 text-sm font-semibold text-primary">
-                      Bangladesh · Remote
+                      Chattogram, Bangladesh
                     </p>
                   </div>
                 </div>

@@ -265,9 +265,9 @@ const Skills = () => {
                   key={category}
                   type="button"
                   onClick={() => setActiveCategory(category)}
-                  className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-200 ${
+                  className={`rounded-xl border px-4 py-2 text-xs font-semibold transition-all duration-200 ${
                     isActive
-                      ? "border-blue bg-blue text-white shadow-md shadow-blue/20"
+                      ? "border-primary bg-primary text-white shadow-md shadow-primary/20"
                       : "border-slate-200 bg-white text-slate-500 hover:border-blue hover:text-blue"
                   }`}
                 >
